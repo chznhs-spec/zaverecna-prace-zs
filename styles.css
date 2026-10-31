@@ -1331,3 +1331,44 @@ img { max-width: 100%; }
 .partner-hover:hover {
   transform: scale(1.12);
 }
+/* Styly pro sekci partnerů */
+.partner-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 50px; /* Větší mezery na PC */
+  width: 100%;
+  margin-top: 30px;
+}
+
+.partner-logo-img {
+  height: 85px; /* Větší výška pro PC (původně byla zhruba taková) */
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hover efekt se zvětšením */
+.partner-hover {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.partner-hover:hover {
+  transform: scale(1.12);
+}
+
+/* Responzivita pro mobily – tady se zmenší jen na mobilu, kde je to potřeba */
+@media (max-width: 768px) {
+  .partner-flex {
+    gap: 25px;
+    padding: 0 20px;
+  }
+  .partner-logo-img {
+    height: 45px; /* Zůstanou malé a hezké na mobilu */
+    max-width: 120px;
+  }
+}
