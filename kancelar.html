@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VLČR Kancelář – Oficiální stránky</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: rgb(65,65,65);
+    color: #fff;
+    font: 14px/1.6 "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+a {
+    color: #65baff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+/* HLAVIČKA */
+
+header {
+    text-align: center;
+    padding: 55px 20px 35px;
+}
+
+.logo {
+    display: block;
+    width: min(520px, 90%);
+    height: auto;
+    margin: 0 auto 15px;
+    object-fit: contain;
+}
+
+.subtitle {
+    color: #ccc;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* HLAVNÍ OBSAH */
+
+main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 15px 20px 60px;
+}
+
+.section-title {
+    font-size: 25px;
+    font-weight: 300;
+    margin: 35px 0 15px;
+    color: #fff;
+}
+
+.intro {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.9;
+    max-width: 850px;
+    margin-bottom: 30px;
+}
+
+/* DLAŽDICE */
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.tile {
+    min-height: 155px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: filter .15s, transform .15s;
+}
+
+.tile:hover {
+    filter: brightness(1.13);
+    transform: scale(1.015);
+}
+
+.tile h3 {
+    font-size: 19px;
+    font-weight: 400;
+    margin: 0 0 8px;
+}
+
+.tile p {
+    margin: 0;
+    color: rgba(255,255,255,.9);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.tile-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.tile.wide {
+    grid-column: span 2;
+}
+
+.tile.tall {
+    grid-row: span 2;
+}
+
+/* BARVY DLAŽDIC */
+
+.blue { background: #0072c6; }
+.cyan { background: #008bba; }
+.orange { background: #e66b19; }
+.green { background: #339933; }
+.purple { background: #7546a8; }
+.red { background: #c83b3b; }
+.darkblue { background: #174b83; }
+.teal { background: #008577; }
+.gray {background: gray;}
+
+/* INSTALACE */
+
+.install-intro {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.step {
+    background: #505050;
+    padding: 22px;
+    border-left: 4px solid #1685d0;
+    min-height: 155px;
+}
+
+.step-number {
+    font-size: 30px;
+    font-weight: 300;
+    color: #55b6ff;
+}
+
+.step h3 {
+    margin: 5px 0;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.step p {
+    color: #ccc;
+    margin: 0;
+}
+
+/* STAŽENÍ */
+
+.download-panel {
+    background: #333;
+    padding: 25px;
+    border: 1px solid #555;
+}
+
+.download-panel h2 {
+    font-size: 23px;
+    font-weight: 300;
+    margin: 0 0 8px;
+}
+
+.download-panel p {
+    color: #ccc;
+}
+
+.download-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #ddd;
+}
+
+select {
+    min-width: 260px;
+    padding: 11px;
+    background: #444;
+    border: 1px solid #777;
+    color: white;
+    font: inherit;
+}
+
+button {
+    padding: 11px 28px;
+    border: none;
+    background: #0072c6;
+    color: white;
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+button:hover {
+    background: #168de0;
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+#info {
+    margin-top: 18px;
+    color: #eee;
+}
+
+#info code {
+    background: #222;
+    padding: 4px 7px;
+    color: #79c5ff;
+}
+
+#meta {
+    color: #999;
+    font-size: 12px;
+}
+
+/* DALŠÍ INFORMACE */
+
+.info-box {
+    background: #505050;
+    padding: 22px;
+    margin-top: 10px;
+}
+
+.info-box h3 {
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.info-box p {
+    color: #ddd;
+    margin-bottom: 0;
+}
+
+/* PATIČKA */
+
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    padding: 25px 15px;
+    border-top: 1px solid #555;
+}
+
+.icon {
+    max-width:50px;
+}
+
+.reklama {
+    max-width: 100%;
+}
+
+/* RESPONZIVITA */
+
+@media (max-width: 750px) {
+    .tiles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .tile.wide {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 450px) {
+    header {
+        padding-top: 35px;
+    }
+
+    .tiles {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tile {
+        padding: 14px;
+        min-height: 160px;
+    }
+
+    .tile h3 {
+        font-size: 16px;
+    }
+
+    .download-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    select, button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HLAVIČKA -->
+
+<header>
+    <img
+        class="logo"
+        src="kancelar_2008.png"
+        alt="VLČR Kancelář"
+    >
+</header>
+
+
+<main>
+
+<!-- PŘEDSTAVENÍ -->
+
+<h2 class="section-title">Zažijte produktivitu ještě dnes!</h2>
+
+<div class="intro">
+    <p>
+        Spousta aplikací používá starý systém mnoha různých typů souboru. Když chce člověk vytvořit textový dokument, musí si pamatovat, že ho má uložit jako .txt. Když chce člověk napsat prezentaci, nezbývá mu, než si pamatovat, do jakého typu souboru ji má uložit.
+    </p>
+    <h2>Chce to změnu.</h2>
+    <p>
+        Náš unikátní kancelářský balíček <strong>VLČR Kancelář</strong> sjednocuje všechny typy souborů do <strong>jednoho jediného.</strong>
+    </p>
+</div>
+
+<img class="reklama" src="reklama.png" alt="">
+
+
+<!-- FUNKCE -->
+
+<h2 class="section-title">Co Kancelář nabízí?</h2>
+
+<div class="tiles">
+    <div class="tile gray">
+        <div>
+            <img src="otevrit_soubor.png" alt="" class="icon">
+            <h3>Průzkumník</h3>
+            <p>
+                Jednotné prostředí pro správu
+                dokumentů VLČR.
+            </p>
+        </div>
+    </div>
+
+    <div class="tile green">
+        <div>
+            <img src="pisar.png" alt="" class="icon">
+            <h3>Písař</h3>
+            <p>
+                Tvorba a úprava textových dokumentů.
+            </p>
+        </div>
+    </div>
+
+    <div class="tile blue">
+        <div>
+            <img src="prezenter.png" alt="" class="icon">
+            <h3>Prezentář</h3>
+            <p>
+                Vytváření a zobrazování prezentací. Rychle a jednoduše.
+            </p>
+        </div>
+    </div>
+
+    <div class="tile orange">
+        <div>
+            <img src="pocitar.png" alt="" class="icon">
+            <h3>Počítář</h3>
+            <p>
+                Tabulkový nástroj VLČR.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="tile wide darkblue">
+        <div>
+     
+            <h3>Jednotný systém souborů</h3>
+            <p>
+                Speciální formát .vlcr sjednocuje práci
+                s dokumenty napříč aplikacemi Kanceláře.
+                Umožňuje jednoduchou organizaci obsahu
+                bez nutnosti řešit jednotlivé typy souborů.
+            </p>
+        </div>
+    </div>
+
+    <div class="tile cyan">
+        <div>
+
+            <h3>Jednoduché ovládání</h3>
+            <p>
+                Přehledné rozhraní dostupné pro každého.
+            </p>
+        </div>
+    </div>
+
+    <div class="tile teal">
+        <div>
+ 
+            <h3>Jeden ekosystém</h3>
+            <p>
+                Jednotné prostředí a vzájemně
+                propojené aplikace.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- INSTALACE -->
+
+
+
+<!-- STAŽENÍ -->
+
+<h2 class="section-title">Stáhnout VLČR Kancelář</h2>
+
+<div class="download-panel">
+
+    <h2>Vyberte svou platformu</h2>
+
+    <p>
+        Níže vyberte operační systém.
+        Stránka automaticky vyhledá nejnovější
+        vydání na GitHubu.
+    </p>
+
+    <div class="download-row">
+
+        <div>
+            <label for="os">Operační systém:</label>
+
+            <select id="os">
+                <option value="windows">Windows</option>
+                <option value="opensuse">Linux – openSUSE</option>
+                <option value="mac">macOS</option>
+            </select>
+        </div>
+
+        <button id="go" type="button">
+            Stáhnout
+        </button>
+
+    </div>
+
+    <p id="info"></p>
+    <p id="meta"></p>
+
+    <noscript>
+        <p>
+            Pro stažení povolte JavaScript nebo navštivte
+            <a href="https://github.com/chznhs-spec/kancelar/releases/latest">
+                stránku vydání na GitHubu
+            </a>.
+        </p>
+    </noscript>
+
+</div>
+
+
+<!-- DODATEČNÉ INFORMACE -->
+
+
+
+
+<footer>
+    © 2026 VLČR – Vzdělaný lid České republiky
+    <br>
+    VLČR Kancelář
+</footer>
+
+
+<script>
+
+// ===== NASTAVENÍ =====
+
+var REPO = "chznhs-spec/kancelar";
+
+var RELEASES_PAGE =
+    "https://github.com/" + REPO + "/releases/latest";
+
+var OSES = {
+
+    windows: {
+        match: /\.exe$/i,
+        fallback:
+            "https://github.com/" + REPO +
+            "/releases/latest/download/vlcr_kancelar_setup.exe",
+        note: "Po stažení spusťte instalační program."
+    },
+
+    opensuse: {
+        match: /\.rpm$/i,
+        fallback: RELEASES_PAGE,
+
+        note: function(a) {
+            return "Instalace: <code>sudo zypper install ./" +
+                (a ? escapeHTML(a.name) : "vlcr-kancelar-*.rpm") +
+                "</code>";
+        }
+    },
+
+    mac: {
+        match: /\.(dmg|pkg)$|mac|darwin|osx/i,
+        fallback: null,
+        note: "Verze pro macOS zatím není k dispozici."
+    }
+
+};
+
+var sel = document.getElementById("os");
+var btn = document.getElementById("go");
+var info = document.getElementById("info");
+var meta = document.getElementById("meta");
+
+var release = null;
+
+
+// ===== OCHRANA HTML =====
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, function(c) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[c];
+    });
+}
+
+
+// ===== VÝBĚR INSTALAČNÍHO SOUBORU =====
+
+function pickAsset(key) {
+
+    if (!release || !release.assets) return null;
+
+    for (var i = 0; i < release.assets.length; i++) {
+
+        var a = release.assets[i];
+
+        if (/\.(sha256|txt|src\.rpm)$/i.test(a.name))
+            continue;
+
+        if (OSES[key].match.test(a.name))
+            return a;
+    }
+
+    return null;
+}
+
+
+// ===== VYKRESLENÍ INFORMACÍ =====
+
+function render() {
+
+    var key = sel.value;
+    var o = OSES[key];
+    var a = pickAsset(key);
+
+    var available = !!(a || o.fallback);
+
+    btn.disabled = !available;
+
+    info.innerHTML =
+        typeof o.note === "function"
+        ? o.note(a)
+        : o.note;
+
+    var parts = [];
+
+    if (a) {
+
+        parts.push(
+            "Soubor: " + escapeHTML(a.name) +
+            " (" +
+            (a.size / 1048576).toFixed(1).replace(".", ",") +
+            " MB)"
+        );
+
+    }
+
+    if (release) {
+
+        parts.push(
+            "verze " +
+            escapeHTML(String(release.tag_name).replace(/^v/i, ""))
+        );
+
+        if (release.published_at) {
+
+            parts.push(
+                "vydáno " +
+                new Date(release.published_at)
+                    .toLocaleDateString("cs-CZ")
+            );
+
+        }
+
+    }
+
+    meta.textContent = parts.join(" • ");
+
+}
+
+
+// ===== STAŽENÍ =====
+
+btn.addEventListener("click", function() {
+
+    var key = sel.value;
+    var a = pickAsset(key);
+
+    var url = a
+        ? a.browser_download_url
+        : OSES[key].fallback;
+
+    if (url) {
+        window.location.href = url;
+    }
+
+});
+
+sel.addEventListener("change", render);
+
+
+// ===== AUTOMATICKÁ DETEKCE SYSTÉMU =====
+
+var ua = (navigator.userAgent || "") +
+         " " +
+         (navigator.platform || "");
+
+if (/Mac/i.test(ua) && !/iPhone|iPad/i.test(ua)) {
+
+    sel.value = "mac";
+
+} else if (/Linux|X11/i.test(ua) && !/Android/i.test(ua)) {
+
+    sel.value = "opensuse";
+
+}
+
+render();
+
+
+// ===== NAČTENÍ NEJNOVĚJŠÍHO VYDÁNÍ Z GITHUBU =====
+
+fetch(
+    "https://api.github.com/repos/" + REPO + "/releases/latest",
+    {
+        headers: {
+            Accept: "application/vnd.github+json"
+        }
+    }
+)
+
+.then(function(r) {
+
+    if (!r.ok) throw new Error(r.status);
+
+    return r.json();
+
+})
+
+.then(function(data) {
+
+    release = data;
+    render();
+
+})
+
+.catch(function() {
+
+    render();
+
+});
+
+</script>
+
+</body>
+</html>
