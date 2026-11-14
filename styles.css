@@ -1360,7 +1360,35 @@ img { max-width: 100%; }
 .partner-hover:hover {
   transform: scale(1.12);
 }
+.reklama {
+  width:100%;
+  background:linear-gradient(to right, rgb(65,65,65), rgb(77, 77, 77));
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+}
+.reklamobrazek {
+  max-height: 100px;
+}
+.kancltlactext {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.reklamni {
+  background-color: #168de0;
+  color:white;
+  font-size: 1.5rem;
+  border-radius: 0;
+  border-width: 0;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+
+}
 /* Responzivita pro mobily – tady se zmenší jen na mobilu, kde je to potřeba */
 @media (max-width: 768px) {
   .partner-flex {
@@ -1370,5 +1398,14 @@ img { max-width: 100%; }
   .partner-logo-img {
     height: 45px; /* Zůstanou malé a hezké na mobilu */
     max-width: 120px;
+  }
+  .reklama {
+    flex-direction: column; 
+  }
+  .kancltlactext {
+    max-width: 80%;
+  }
+  .reklamni {
+    width:100%;
   }
 }
