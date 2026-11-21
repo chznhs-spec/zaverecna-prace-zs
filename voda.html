@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oáza Vody — Čistá voda nás všechny zachrání | www.vzdelanylid.cz</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kaligrafické logo (Caveat / Kaushan Script) + čistý moderní sans-serif (Plus Jakarta Sans / Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            overflow-x: clip;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Kaligrafické logo jako na vzorovém obrázku */
+        .oasis-script {
+            font-family: 'Kaushan Script', cursive;
+            line-height: 1.1;
+        }
+
+        /* Jemné geometrické kosočtverce na bílém pozadí (jako pod hero fotkou na vzoru) */
+        .diamond-pattern {
+            background-color: #ffffff;
+            background-image:
+                linear-gradient(45deg, #f8fafc 25%, transparent 25%),
+                linear-gradient(-45deg, #f8fafc 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f1f5f9 75%),
+                linear-gradient(-45deg, transparent 75%, #f1f5f9 75%);
+            background-size: 96px 96px;
+            background-position: 0 0, 0 48px, 48px -48px, -48px 0px;
+        }
+
+        /* Sjednocené zarovnání horní lišty a hlavičky */
+        .top-ad-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .top-ad-box {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 639px) {
+            .top-ad-bar {
+                flex-wrap: nowrap;
+            }
+            .top-ad-box {
+                min-height: 38px;
+            }
+        }
+
+        /* Insane blikající reklama pro Vzdělaný Lid */
+        .insane-ad-pulse {
+            animation: adPulse 0.65s infinite alternate;
+        }
+
+        @keyframes adPulse {
+            0% {
+                background-color: #fef08a;
+                color: #b91c1c;
+                border-color: #ef4444;
+                transform: scale(1);
+            }
+            100% {
+                background-color: #dc2626;
+                color: #ffffff;
+                border-color: #fef08a;
+                transform: scale(1.015);
+            }
+        }
+
+        /* Běžící reklamní lišta */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeRun 24s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marqueeRun {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Padající kapky při kliknutí na "Přijmout vlnu naděje" */
+        .water-drop-anim {
+            position: fixed;
+            top: -40px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: dropFall linear forwards;
+        }
+        @keyframes dropFall {
+            to {
+                transform: translateY(108vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="diamond-pattern pb-20 md:pb-24">
+
+    <!-- =====================================================================
+1. HORNÍ INSANE LIŠTA S LOGO_VLCR.PNG (NAD CELÝM MODERNÍM WEBEM)
+    ====================================================================== -->
+    <div class="sticky top-0 z-50 bg-gradient-to-r from-sky-600 via-blue-500 to-sky-600 text-white border-b-4 border-yellow-300 shadow-xl">
+        <div class="max-w-7xl mx-auto px-2.5 sm:px-3 py-1.5 top-ad-bar">
+            <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="top-ad-box shrink-0 flex items-center gap-1.5 sm:gap-2 bg-white px-2 sm:px-2.5 py-1 rounded-xl shadow hover:scale-105 transition">
+                <img src="logo_VLCR.png" alt="VLČR Logo" class="vlcr-img h-7 sm:h-8 md:h-9 w-auto object-contain">
+                <span class="hidden sm:inline text-xs font-extrabold text-sky-900 tracking-tight whitespace-nowrap">WWW.VZDELANYLID.CZ</span>
+            </a>
+
+            <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="top-ad-box insane-ad-pulse px-2.5 sm:px-3 py-1 rounded-xl font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-tight sm:tracking-wide border-2 text-center flex-1 min-w-0 max-w-xl shadow leading-tight">
+                💧 VODA NÁS ZACHRÁNÍ — ALE NEJDŘÍV KLIKNI NA WWW.VZDELANYLID.CZ! 💧
+            </a>
+
+            <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="top-ad-box shrink-0 flex bg-white px-2 py-1 rounded-xl shadow hover:scale-105 transition">
+                <img src="logo_VLCR.png" alt="VLČR Logo" class="vlcr-img h-7 sm:h-8 md:h-9 w-auto object-contain">
+            </a>
+        </div>
+
+        <!-- Běžící pás s reklamou -->
+        <div class="bg-slate-900 text-yellow-300 text-[11px] py-1 overflow-hidden">
+            <div class="marquee-track font-bold tracking-wider uppercase">
+                <span class="mx-6">🌊 „Když se spojíme u sklenice čisté vody a otevřeme WWW.VZDELANYLID.CZ, zachráníme celý svět!“</span>
+                <span class="mx-6">✨ HLAVNÍ PARTNER OÁZY VODY: WWW.VZDELANYLID.CZ — VZDĚLÁNÍ A HYDRATACE PRO KAŽDÉHO ✨</span>
+                <span class="mx-6">💧 KAŽDÁ KAPKA SE POČÍTÁ • KAŽDÉ KLIKNUTÍ NA VLČR MĚNÍ BUDOUCNOST • WWW.VZDELANYLID.CZ</span>
+                <!-- Duplikát pro plynulou smyčku -->
+                <span class="mx-6">🌊 „Když se spojíme u sklenice čisté vody a otevřeme WWW.VZDELANYLID.CZ, zachráníme celý svět!“</span>
+                <span class="mx-6">✨ HLAVNÍ PARTNER OÁZY VODY: WWW.VZDELANYLID.CZ — VZDĚLÁNÍ A HYDRATACE PRO KAŽDÉHO ✨</span>
+                <span class="mx-6">💧 KAŽDÁ KAPKA SE POČÍTÁ • KAŽDÉ KLIKNUTÍ NA VLČR MĚNÍ BUDOUCNOST • WWW.VZDELANYLID.CZ</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+2. ČISTÁ BÍLÁ HLAVIČKA A NAVIGACE (PRESNĚ VE STYLU VZOROVÉHO OBRÁZKU)
+    ====================================================================== -->
+    <header class="bg-white/95 backdrop-blur-sm border-b border-slate-100 relative z-30">
+        <!-- Horní mini-řádek jako na obrázku (Registrace | Přihlášení + mini logo VLČR) -->
+        <div class="max-w-6xl mx-auto px-4 pt-2 pb-1 flex flex-wrap justify-between items-center gap-2 text-xs text-sky-500">
+            <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-slate-500 hover:text-sky-600 font-semibold">
+                <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-5 w-auto object-contain shrink-0">
+                <span>Partner hnutí: <strong class="text-sky-600 underline">www.vzdelanylid.cz</strong></span>
+            </a>
+            <div class="flex items-center space-x-2 font-medium shrink-0">
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="hover:underline">Registrace</a>
+                <span class="text-slate-300">|</span>
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="hover:underline">Přihlášení</a>
+            </div>
+        </div>
+
+        <!-- Hlavní navigační lišta -->
+        <div class="max-w-6xl mx-auto px-4 py-3.5 md:py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4">
+            <!-- Kaligrafický název "Oáza Vody" -->
+            <a href="#" class="flex items-center gap-3 group shrink-0">
+                <span class="oasis-script text-3xl md:text-4xl text-slate-900 tracking-tight group-hover:text-sky-600 transition">
+                    Oáza Vody
+                </span>
+                <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-7 md:h-8 w-auto object-contain opacity-90 shrink-0">
+            </a>
+
+            <!-- Položky menu přesně v duchu moderní otevřené komunity -->
+            <nav class="w-full md:w-auto flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-6 lg:gap-7 text-xs sm:text-sm font-semibold text-slate-700">
+                <a href="#" class="text-sky-500 whitespace-nowrap">Domů</a>
+                <a href="#poslani" class="hover:text-sky-500 transition whitespace-nowrap">O nás</a>
+                <a href="#inspirace" class="hover:text-sky-500 transition flex items-center gap-1 whitespace-nowrap">
+                    Hledám smysl <span class="text-[10px]">⌄</span>
+                </a>
+                <a href="#citáty" class="hover:text-sky-500 transition flex items-center gap-1 whitespace-nowrap">
+                    Aktuality <span class="text-[10px]">⌄</span>
+                </a>
+                <a href="#hydratace" class="hover:text-sky-500 transition flex items-center gap-1 whitespace-nowrap">
+                    Kontakt <span class="text-[10px]">⌄</span>
+                </a>
+                <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="hover:text-sky-500 transition font-bold text-slate-900 whitespace-nowrap">
+                    Podpořit online
+                </a>
+                <!-- Česká vlaječka -->
+                <a href="https://www.vzdelanylid.cz" target="_blank" title="Vzdělaný Lid ČR" class="inline-flex items-center gap-1 shrink-0">
+                    <span class="inline-block w-5 h-3.5 rounded-[2px] overflow-hidden border border-slate-200 relative bg-white">
+                        <span class="block h-1/2 bg-white"></span>
+                        <span class="block h-1/2 bg-red-600"></span>
+                        <span class="absolute inset-y-0 left-0 w-0 h-0 border-y-[7px] border-y-transparent border-l-[10px] border-l-blue-700"></span>
+                    </span>
+                    <span class="text-[10px] text-slate-400">⌄</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+3. POSTANNÍ FIXNÍ REKLAMNÍ BANNERY VLČR (PO STRANÁCH BÍLÉ PLOCHY)
+    ====================================================================== -->
+    <aside class="hidden xl:flex fixed left-3 top-36 bottom-24 w-44 z-40 flex-col justify-between bg-white/95 border-2 border-sky-200 rounded-2xl p-3 shadow-lg text-center">
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="group">
+            <span class="inline-block bg-sky-100 text-sky-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-2">Inspirace dne</span>
+            <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img w-32 mx-auto object-contain group-hover:scale-105 transition">
+            <p class="mt-2 font-bold text-xs text-slate-800">Čistá mysl začíná u čisté vody.</p>
+        </a>
+        <div class="bg-sky-50 rounded-xl p-2 border border-sky-100">
+            <p class="text-[11px] text-slate-600">Objev komunitu lidí, kterým na budoucnosti záleží:</p>
+            <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img w-24 mx-auto my-2 object-contain">
+        </div>
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="insane-ad-pulse py-2 px-2 rounded-xl font-black text-[11px] uppercase border-2 shadow">
+            WWW.VZDELANYLID.CZ ↗
+        </a>
+    </aside>
+
+    <aside class="hidden xl:flex fixed right-3 top-36 bottom-24 w-44 z-40 flex-col justify-between bg-white/95 border-2 border-sky-200 rounded-2xl p-3 shadow-lg text-center">
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="group">
+            <span class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase mb-2">Společná naděje</span>
+            <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img w-32 mx-auto object-contain group-hover:scale-105 transition">
+            <p class="mt-2 font-bold text-xs text-slate-800">Voda nás všechny spojí a zachrání!</p>
+        </a>
+        <div class="bg-amber-50 rounded-xl p-2 border border-amber-100">
+            <p class="text-[11px] text-slate-700 font-semibold">Přidej se k tisícům probuzených čtenářů.</p>
+            <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img w-24 mx-auto my-2 object-contain">
+        </div>
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="bg-sky-500 hover:bg-sky-600 text-white py-2 px-2 rounded-xl font-bold text-[11px] uppercase shadow transition">
+            Vstoupit na portál ➔
+        </a>
+    </aside>
+
+    <!-- =====================================================================
+4. ŠIROKOÚHLÝ HERO BANNER (DLANĚ NABÍRAJÍCÍ VODU JAKO NA VZORU)
+    ====================================================================== -->
+    <section class="relative w-full min-h-[380px] sm:min-h-[440px] md:h-[500px] overflow-hidden bg-sky-900 flex items-center py-10 md:py-0">
+        <!-- Reálná inspirativní fotografie dlaní v čisté tekoucí vodě -->
+        <img src="https://images.unsplash.com/photo-1527066579998-dbbae57f45ce?auto=format&fit=crop&w=1920&q=85"
+             onerror="this.src='https://placehold.co/1920x600/0284c7/ffffff?text=Cista+Voda+Nas+Vsechny+Zachrani'"
+             alt="Dlaně nabírající čistou průzračnou vodu"
+             class="absolute inset-0 w-full h-full object-cover object-center">
+
+        <!-- Jemný modrobílý světelný přechod pro čitelnost inspirativního poselství -->
+        <div class="absolute inset-0 bg-gradient-to-r from-sky-950/75 via-sky-900/45 to-sky-950/25"></div>
+
+        <!-- Vodoznak VLČR v rohu hero fotky -->
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="hidden sm:flex absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-2xl shadow-lg items-center gap-2 hover:scale-105 transition">
+            <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-8 md:h-9 w-auto object-contain">
+            <span class="text-xs font-extrabold text-sky-900">www.vzdelanylid.cz</span>
+        </a>
+
+        <!-- Hlavní inspirativní poselství ("všechny nás to zachrání" vibe) -->
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 flex flex-col justify-center">
+            <div class="max-w-xl text-white space-y-3 sm:space-y-4">
+                <span class="inline-block bg-white/20 backdrop-blur-md text-white text-[11px] sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest px-3 py-1 rounded-full border border-white/30">
+                    Místo klidu, naděje a čisté energie
+                </span>
+                <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-sm">
+                    Jedna kapka dokáže změnit všechno. Voda nás všechny zachrání.
+                </h1>
+                <p class="text-sm sm:text-base md:text-lg text-sky-50/95 leading-relaxed font-normal">
+                    Věříme v sílu nového začátku. Každý doušek čisté vody přináší jasnou mysl, klid do duše a naději pro lepší zítřek nás všech.
+                </p>
+                <div class="pt-1 sm:pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+                    <a href="https://www.linkedin.com/in/adam-%C5%A1kapa-39568310b/" target="_blank" rel="noopener" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs sm:text-sm shadow-lg transition transform hover:scale-105 cursor-pointer text-center">
+                        💧 Přijmout vlnu naděje
+                    </a>
+                    <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white text-sky-900 hover:bg-yellow-100 font-extrabold text-xs sm:text-sm shadow-lg flex items-center justify-center gap-2 transition">
+                        <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-5 w-auto">
+                        <span>Objevit www.vzdelanylid.cz</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+5. HLAVNÍ OBSAH NA BÍLÉM KOSOČTVERCOVÉM POZADÍ
+    ====================================================================== -->
+    <main class="max-w-5xl mx-auto px-4 pt-8 sm:pt-10 space-y-10 sm:space-y-12 relative z-10">
+
+        <!-- REKLAMNÍ BANNER #1 (HNED POD HERO FOTKOU) -->
+        <div class="bg-white border-2 border-sky-400 rounded-2xl p-4 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3">
+                <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-12 sm:h-14 w-auto object-contain shrink-0">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-sky-600">Doporučuje Oáza Vody</span>
+                    <h3 class="font-extrabold text-base md:text-lg text-slate-900">Chcete porozumět světu stejně jasně jako křišťálové studánce?</h3>
+                    <p class="text-sm text-slate-600">Navštivte <a href="https://www.vzdelanylid.cz" target="_blank" class="text-sky-600 font-bold underline">www.vzdelanylid.cz</a> — portál pro všechny, kdo hledají pravdu a nadhled.</p>
+                </div>
+            </div>
+            <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="insane-ad-pulse px-5 py-2.5 rounded-xl font-black text-xs uppercase border-2 whitespace-nowrap shadow shrink-0">
+                Otevřít Vzdělaný Lid »
+            </a>
+        </div>
+
+        <!-- SEKCE O NÁS / POSLÁNÍ ("VŠECHNY NÁS TO ZACHRÁNÍ" OPTIMISMUS) -->
+        <section id="poslani" class="bg-white/90 rounded-3xl p-6 sm:p-8 md:p-12 border border-slate-100 shadow-sm text-center space-y-5 relative overflow-hidden">
+            <img src="logo_VLCR.png" alt="Vodoznak" class="vlcr-img w-36 opacity-10 absolute -top-4 -left-4 pointer-events-none">
+            <img src="logo_VLCR.png" alt="Vodoznak" class="vlcr-img w-36 opacity-10 absolute -bottom-4 -right-4 pointer-events-none">
+
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-500">Naše společná vize</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 max-w-2xl mx-auto">
+                Voda nerozlišuje. Spojuje nás, uzdravuje a dává nám novou šanci.
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+                Žijeme v uspěchané době, kdy často zapomínáme na to nejjednodušší. Čistá voda je základem všeho živého – tvoří většinu našeho těla i naší planety. Když se zastavíme, zhluboka se nadechneme a napijeme se obyčejné čisté vody, vrací se nám klid, vděčnost a víra, že všechno dobře dopadne.
+            </p>
+
+            <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-left">
+                <div class="p-5 rounded-2xl bg-sky-50/70 border border-sky-100">
+                    <div class="text-2xl mb-2">🌊</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Čistota a obnova</h3>
+                    <p class="text-sm text-slate-600 mt-1">Každé ráno je příležitostí smýt včerejší starosti a začít s čistým štítem.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-sky-50/70 border border-sky-100">
+                    <div class="text-2xl mb-2">☀️</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Naděje pro každého</h3>
+                    <p class="text-sm text-slate-600 mt-1">Bez rozdílu, odkud přicházíte – pramen života je tu otevřený pro nás všechny.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-sky-50/70 border border-sky-100">
+                    <div class="text-2xl mb-2">🤝</div>
+                    <h3 class="font-bold text-slate-900 text-lg">Společná záchrana</h3>
+                    <p class="text-sm text-slate-600 mt-1">Když pečujeme o vodu a o své vzdělání na <a href="https://www.vzdelanylid.cz" target="_blank" class="text-sky-600 font-semibold underline">vzdelanylid.cz</a>, budujeme lepší svět.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERIE INSPIRATIVNÍCH FOTEK VODY (REÁLNÉ UNSPLASH FOTKY + VLCR LOGA) -->
+        <section id="inspirace" class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-500">Okamžiky ticha a síly</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Inspirace v každém pohybu hladiny</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Karta 1: Sluneční paprsky pod vodou -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col">
+                    <div class="relative h-52 sm:h-56 bg-sky-100">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                             onerror="this.src='https://placehold.co/800x600/38bdf8/ffffff?text=Svetlo+a+Voda'"
+                             alt="Sluneční paprsky a čisté moře" class="w-full h-full object-cover">
+                        <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-8 w-auto absolute top-3 right-3 bg-white/90 p-1 rounded-lg shadow">
+                    </div>
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900">Světlo pod hladinou</h3>
+                            <p class="text-sm text-slate-600 mt-2 italic">„I v těch nejhlubších chvílích proniká skrz čistou vodu světlo. Stačí zvednout pohled vzhůru.“</p>
+                        </div>
+                        <a href="https://www.vzdelanylid.cz" target="_blank" class="mt-4 inline-flex items-center justify-between text-xs font-bold text-sky-600 hover:text-sky-800 pt-3 border-t border-slate-100">
+                            <span>Více inspirace: www.vzdelanylid.cz</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Karta 2: Klidné horské jezero -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col">
+                    <div class="relative h-52 sm:h-56 bg-sky-100">
+                        <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=800&q=80"
+                             onerror="this.src='https://placehold.co/800x600/0ea5e9/ffffff?text=Klidna+Hladina'"
+                             alt="Klidné horské jezero odrážející oblohu" class="w-full h-full object-cover">
+                        <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-8 w-auto absolute top-3 right-3 bg-white/90 p-1 rounded-lg shadow">
+                    </div>
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900">Ticho, které léčí</h3>
+                            <p class="text-sm text-slate-600 mt-2 italic">„Když se hladina ztiší, dokáže věrně odrážet celé nebe. Stejně tak naše mysl, když jí dopřejeme klid.“</p>
+                        </div>
+                        <a href="https://www.vzdelanylid.cz" target="_blank" class="mt-4 inline-flex items-center justify-between text-xs font-bold text-sky-600 hover:text-sky-800 pt-3 border-t border-slate-100">
+                            <span>Číst příběhy: www.vzdelanylid.cz</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Karta 3: Čistá kapka / vlnky -->
+                <article class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col">
+                    <div class="relative h-52 sm:h-56 bg-sky-100">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80"
+                             onerror="this.src='https://placehold.co/800x600/0284c7/ffffff?text=Sila+Pramene'"
+                             alt="Horský pramen a hvězdná obloha" class="w-full h-full object-cover">
+                        <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-8 w-auto absolute top-3 right-3 bg-white/90 p-1 rounded-lg shadow">
+                    </div>
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900">Síla jediného pramene</h3>
+                            <p class="text-sm text-slate-600 mt-2 italic">„Každá velká řeka začíná jako nenápadný pramen. Nikdy nepodceňuj sílu malého dobrého kroku.“</p>
+                        </div>
+                        <a href="https://www.vzdelanylid.cz" target="_blank" class="mt-4 inline-flex items-center justify-between text-xs font-bold text-sky-600 hover:text-sky-800 pt-3 border-t border-slate-100">
+                            <span>Objevit více: www.vzdelanylid.cz</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- REKLAMNÍ BANNER #2 (TROJITÉ LOGO_VLCR.PNG UPROSTŘED BÍLÉHO WEBU) -->
+        <a href="https://www.vzdelanylid.cz" target="_blank" rel="noopener" class="block bg-gradient-to-r from-sky-500 via-blue-600 to-sky-500 rounded-3xl p-5 sm:p-6 text-white shadow-xl hover:scale-[1.01] transition border-4 border-yellow-300">
+            <div class="flex flex-col sm:flex-row items-center justify-around gap-4 text-center">
+                <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-12 sm:h-14 bg-white p-1.5 rounded-2xl shadow shrink-0">
+                <div class="max-w-xl">
+                    <span class="inline-block bg-yellow-300 text-sky-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase mb-1">
+                        Exkluzivní poselství pro návštěvníky Oázy Vody
+                    </span>
+                    <h3 class="text-lg sm:text-2xl font-black">Voda osvěží tělo. WWW.VZDELANYLID.CZ osvěží mysl!</h3>
+                    <p class="text-xs sm:text-sm text-sky-100 mt-1">Klikněte zde a staňte se součástí komunity Vzdělaného Lidu ještě dnes.</p>
+                </div>
+                <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-12 sm:h-14 bg-white p-1.5 rounded-2xl shadow shrink-0">
+            </div>
+        </a>
+
+        <!-- INSPIRATIVNÍ CITÁTY O VODĚ A ŽIVOTĚ -->
+        <section id="citáty" class="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-100 shadow-sm space-y-6">
+            <div class="text-center">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-sky-500">Slova, která povzbudí</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Myšlenky pro každý den</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <blockquote class="p-5 sm:p-6 rounded-2xl bg-slate-50 border-l-4 border-sky-500">
+                    <p class="text-base sm:text-lg italic text-slate-800">„Buď jako voda, příteli. Voda se nikdy nehádá s kamenem – klidně ho obejme, plyne dál a nakonec změní celé údolí.“</p>
+                    <footer class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-wider">— Inspirace Oázy Vody</footer>
+                </blockquote>
+
+                <blockquote class="p-5 sm:p-6 rounded-2xl bg-slate-50 border-l-4 border-sky-500">
+                    <p class="text-base sm:text-lg italic text-slate-800">„Když se cítíš vyčerpaný, ztracený nebo bez energie, začni tím nejprostším zázrakem: vypij sklenici čisté vody a podívej se na <a href="https://www.vzdelanylid.cz" target="_blank" class="text-sky-600 underline">www.vzdelanylid.cz</a>.“</p>
+                    <footer class="mt-3 text-xs font-bold text-slate-500 uppercase tracking-wider">— Poselství naděje</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- INTERAKTIVNÍ KALKULAČKA DENNÍ VLNY NADĚJE A HYDRATACE -->
+        <section id="hydratace" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-sky-500">Pečuj o sebe</span>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">Kolik čisté vody jste dnes dopřáli svému tělu?</h2>
+                </div>
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="flex items-center gap-2 bg-sky-50 px-3 py-1.5 rounded-xl border border-sky-200">
+                    <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-7 w-auto">
+                    <span class="text-xs font-bold text-sky-800">Index vitality VLČR</span>
+                </a>
+            </div>
+
+            <div class="p-4 sm:p-6 rounded-2xl bg-sky-50/60 border border-sky-100">
+                <div class="flex flex-wrap justify-between items-center gap-2 font-bold text-slate-800 mb-2">
+                    <span>Dnešní příjem čisté vody:</span>
+                    <span id="waterAmountLabel" class="text-lg sm:text-xl text-sky-600">4 sklenice (1,0 l)</span>
+                </div>
+                <input type="range" min="0" max="12" value="4" oninput="updateWaterProgress(this.value)"
+                       class="w-full h-3 bg-sky-200 rounded-lg appearance-none cursor-pointer accent-sky-500">
+
+                <div class="mt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-slate-100">
+                    <p id="waterEncouragement" class="text-sm text-slate-700 font-medium">
+                        Skvělý začátek! Každá další sklenice přináší novou vlnu energie a jasné myšlenky.
+                    </p>
+                    <a href="https://www.vzdelanylid.cz" target="_blank" class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs whitespace-nowrap transition text-center shrink-0">
+                        Pokračovat na vzdelanylid.cz →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZÁVĚREČNÁ REKLAMNÍ STĚNA VLČR -->
+        <section class="bg-gradient-to-r from-yellow-200 via-amber-100 to-yellow-200 rounded-3xl p-5 sm:p-6 border-2 border-amber-400 text-center space-y-4">
+            <h3 class="font-black text-lg sm:text-2xl text-slate-900">
+                🌟 Oficiální rozcestník naděje a poznání: WWW.VZDELANYLID.CZ 🌟
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="bg-white p-3 rounded-2xl shadow hover:scale-105 transition flex flex-col items-center">
+                    <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-10 sm:h-12 object-contain">
+                    <span class="mt-2 text-xs font-extrabold text-sky-700">Články & Inspirace</span>
+                </a>
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="bg-white p-3 rounded-2xl shadow hover:scale-105 transition flex flex-col items-center">
+                    <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-10 sm:h-12 object-contain">
+                    <span class="mt-2 text-xs font-extrabold text-sky-700">Komunita VLČR</span>
+                </a>
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="bg-white p-3 rounded-2xl shadow hover:scale-105 transition flex flex-col items-center">
+                    <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-10 sm:h-12 object-contain">
+                    <span class="mt-2 text-xs font-extrabold text-sky-700">Vzdělávání</span>
+                </a>
+                <a href="https://www.vzdelanylid.cz" target="_blank" class="bg-white p-3 rounded-2xl shadow hover:scale-105 transition flex flex-col items-center">
+                    <img src="logo_VLCR.png" alt="VLČR" class="vlcr-img h-10 sm:h-12 object-contain">
+                    <span class="mt-2 text-xs font-extrabold text-sky-700">Vstoupit nyní ↗</span>
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center text-xs text-slate-400 py-6">
+            © 2026 Vzdělaný lid České republiky
+        </footer>
+    </main>
+</body>
+</html>
