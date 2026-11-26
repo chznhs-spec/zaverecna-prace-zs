@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>VLČR ISE - Docházka a zápisy</title>
+</head>
+<body>
+
+<table>
+<tr>
+<td valign="top">
+<!-- Sem vložte logo kroužku (nahraďte src) -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBTAA7" alt="Logo VLČR ISE" width="80" height="80">
+</td>
+<td valign="top">
+<h1>VLČR ISE</h1>
+</td>
+</tr>
+</table>
+
+<p>
+Toto je oficiální internetová stránka určená k zápisu docházky a probíraných témat na ISE.\n V případě dotazů nás neváhejte kontaktovat prostřednictvím internetové pošty na adresu info@vzdelanylid.cz.
+</p>
+
+<hr>
+
+<h2>Zápis docházky a probíraných témat</h2>
+
+<p><i>Poznámka: údaje se ukládají sdíleně - uvidí je každý, kdo má odkaz na tuto stránku.</i></p>
+
+<h3>Nový zápis</h3>
+
+<form onsubmit="return false;">
+
+<p>
+Datum: <input type="date" id="datum">
+</p>
+
+<p>
+Probíraná témata:<br>
+<textarea id="temata" rows="4" cols="60"></textarea>
+</p>
+
+<p>
+Docházka:<br>
+<div id="clenoveSeznam"></div>
+</p>
+
+<p>
+Přidat nového člena: <input type="text" id="novyClen">
+<button onclick="pridatClena()">Přidat člena</button>
+</p>
+
+<p>
+<button onclick="ulozitZapis()">Uložit zápis</button>
+<span id="stavUlozeni"></span>
+</p>
+
+</form>
+
+<hr>
+
+<h3>Historie zápisů</h3>
+
+<div id="historie">Načítám...</div>
+
+<script>
+let clenove = [];
+let zapisy = [];
+
+async function nacistData() {
+  try {
+    const c = await window.storage.get('clenove', true);
+    clenove = c ? JSON.parse(c.value) : [];
+  } catch (e) {
+    clenove = [];
+  }
+  try {
+    const z = await window.storage.get('zapisy', true);
+    zapisy = z ? JSON.parse(z.value) : [];
+  } catch (e) {
+    zapisy = [];
+  }
+  vykreslitCleny();
+  vykreslitHistorii();
+}
+
+function vykreslitCleny() {
+  const div = document.getElementById('clenoveSeznam');
+  if (clenove.length === 0) {
+    div.innerHTML = '<i>Zatím nejsou přidáni žádní členové. Přidejte je níže.</i>';
+    return;
+  }
+  let html = '';
+  for (const jmeno of clenove) {
+    const id = 'prit_' + jmeno.replace(/[^a-zA-Z0-9]/g, '_');
+    html += '<input type="checkbox" id="' + id + '" name="pritomny" value="' + jmeno + '" checked> ';
+    html += '<label for="' + id + '">' + jmeno + '</label> ';
+    html += '<button onclick="odebratClena(\'' + jmeno.replace(/'/g, "\\'") + '\')">Odebrat</button><br>';
+  }
+  div.innerHTML = html;
+}
+
+async function ulozitCleny() {
+  try {
+    await window.storage.set('clenove', JSON.stringify(clenove), true);
+  } catch (e) {
+    console.error('Chyba při ukládání členů', e);
+  }
+}
+
+async function pridatClena() {
+  const input = document.getElementById('novyClen');
+  const jmeno = input.value.trim();
+  if (!jmeno) return;
+  if (!clenove.includes(jmeno)) {
+    clenove.push(jmeno);
+    await ulozitCleny();
+    vykreslitCleny();
+  }
+  input.value = '';
+}
+
+async function odebratClena(jmeno) {
+  clenove = clenove.filter(j => j !== jmeno);
+  await ulozitCleny();
+  vykreslitCleny();
+}
+
+async function ulozitZapis() {
+  const datum = document.getElementById('datum').value;
+  const temata = document.getElementById('temata').value.trim();
+  const stav = document.getElementById('stavUlozeni');
+
+  if (!datum) {
+    stav.textContent = ' Vyplňte prosím datum.';
+    return;
+  }
+
+  const checkboxy = document.querySelectorAll('input[name="pritomny"]');
+  const dochazka = {};
+  checkboxy.forEach(cb => {
+    dochazka[cb.value] = cb.checked;
+  });
+
+  const zapis = {
+    id: Date.now().toString(),
+    datum: datum,
+    temata: temata,
+    dochazka: dochazka
+  };
+
+  zapisy.push(zapis);
+  zapisy.sort((a, b) => a.datum < b.datum ? 1 : -1);
+
+  try {
+    const result = await window.storage.set('zapisy', JSON.stringify(zapisy), true);
+    if (result) {
+      stav.textContent = ' Uloženo.';
+    } else {
+      stav.textContent = ' Uložení se nezdařilo.';
+    }
+  } catch (e) {
+    stav.textContent = ' Chyba při ukládání.';
+    console.error(e);
+  }
+
+  document.getElementById('temata').value = '';
+  vykreslitHistorii();
+}
+
+async function smazatZapis(id) {
+  zapisy = zapisy.filter(z => z.id !== id);
+  try {
+    await window.storage.set('zapisy', JSON.stringify(zapisy), true);
+  } catch (e) {
+    console.error(e);
+  }
+  vykreslitHistorii();
+}
+
+function vykreslitHistorii() {
+  const div = document.getElementById('historie');
+  if (zapisy.length === 0) {
+    div.innerHTML = '<i>Zatím nejsou žádné zápisy.</i>';
+    return;
+  }
+
+  let html = '<table border="1" cellpadding="5">';
+  html += '<tr><th>Datum</th><th>Témata</th><th>Přítomní</th><th>Nepřítomní</th><th></th></tr>';
+
+  for (const z of zapisy) {
+    const pritomni = Object.keys(z.dochazka).filter(j => z.dochazka[j]);
+    const nepritomni = Object.keys(z.dochazka).filter(j => !z.dochazka[j]);
+    html += '<tr>';
+    html += '<td>' + z.datum + '</td>';
+    html += '<td>' + (z.temata || '-') + '</td>';
+    html += '<td>' + (pritomni.join(', ') || '-') + '</td>';
+    html += '<td>' + (nepritomni.join(', ') || '-') + '</td>';
+    html += '<td><button onclick="smazatZapis(\'' + z.id + '\')">Smazat</button></td>';
+    html += '</tr>';
+  }
+
+  html += '</table>';
+  div.innerHTML = html;
+}
+
+nacistData();
+</script>
+
+</body>
+</html>

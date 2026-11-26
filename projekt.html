@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7553703629533488"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="google-adsense-account" content="ca-pub-7553703629533488" />
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekty | VLČR</title>
+    <link rel="icon" type="image/png" href="logo_VLCR.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="pride.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7553703629533488"
+     crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="menu">
+      <a
+        href="index.html"
+        class="horizontal-flex"
+        style="justify-content: flex-start"
+      >
+        <img src="logo_VLCR.png" alt="Logo VLČR" class="logo" />
+        <p class="logo-placeholder">Vzdělaný lid České republiky</p>
+      </a>
+      <section class="menu-text">
+        <a href="projekt.html" class="menu-item">Projekty</a>
+        <a href="novinki.html" class="menu-item">Novinky</a>
+        <a href="nastym.html" class="menu-item">Náš tým</a>
+        <a href="kontakt.html" class="menu-item">Kontakt</a>
+      </section>
+    </section>
+
+    <section class="content">
+      <h1 class="page-title">Projekty</h1>
+      <div class="separator"></div>
+      <div class="feature">
+        <div class="feature-media slider">
+          <div class="slides">
+            <div class="slide"><img src="foto3-divadlo.jpeg" alt="Obrázek 1" /></div>
+            <div class="slide"><img src="foto4.jpeg" alt="Obrázek 2" /></div>
+            <div class="slide"><img src="foto1.jpeg" alt="Obrázek 3" /></div>
+            <div class="slide"><img src="foto2.jpeg" alt="Obrázek 4" /></div>
+          </div>
+        </div>
+        <div class="feature-text">
+          <p>
+            Na této stránce najdete přehled našich aktuálních i minulých
+            projektů členů VLČR. Naše projekty pokrývají širokou škálu
+            oblastí, od návrhu automatizovaného vodního loutkového divadla
+            po komplexní robotické systémy. Každý projekt je výsledkem
+            spolupráce, kreativity a technických dovedností našich členů.
+          </p>
+        </div>
+      </div>
+      <div class="separator-full"></div>
+
+      <div class="feature">
+        <div class="feature-media carousel2">
+          <div class="slides2" id="slides2">
+            <div class="slide2"><img src="foto3-divadlo.jpeg" alt="Vodní divadlo 1" /></div>
+            <div class="slide2"><img src="foto5-divadlo.jpeg" alt="Vodní divadlo 2" /></div>
+            <div class="slide2"><img src="foto6-divadlo.jpeg" alt="Vodní divadlo 3" /></div>
+            <div class="slide2"><img src="divadlo.jpeg" alt="Vodní divadlo 4" /></div>
+          </div>
+          <div class="arrow2 left2" id="prev2">&#10094;</div>
+          <div class="arrow2 right2" id="next2">&#10095;</div>
+        </div>
+        <div class="feature-text">
+          <h1><em>Automatizace tradičního vietnamského vodního loutkového divadla</em></h1>
+          <div class="separator"></div>
+          <p>
+            Projekt propojuje tradiční vietnamské vodní loutkové divadlo s
+            moderní technikou. Členové VLČR vyvinuli mechanický systém pro
+            ovládání loutek ve vodě, doplněný o barevné osvětlení, imerzivní
+            ozvučení a nechybí ani speciální efekty. Celý systém je řízen
+            mikropočítačem Arduino Uno, který zajišťuje koordinaci pohybů a
+            průběh představení při zachování autentické atmosféry.
+          </p>
+        </div>
+      </div>
+      <script>
+        const slides2 = document.getElementById("slides2");
+        const total2 = slides2.children.length;
+        let index2 = 0;
+        function updateSlide2() {
+          slides2.style.transform = `translateX(${-index2 * 100}%)`;
+        }
+        document.getElementById("next2").onclick = () => {
+          index2 = (index2 + 1) % total2;
+          updateSlide2();
+        };
+        document.getElementById("prev2").onclick = () => {
+          index2 = (index2 - 1 + total2) % total2;
+          updateSlide2();
+        };
+      </script>
+      <div class="separator-full"></div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <h1><em>Robot "Mantinel"</em></h1>
+          <div class="separator"></div>
+          <p>Jedním z našich projektů je vývoj vzdělávacího open-source robota "Mantinel", který pomáhá ve vzdělávání v oblasti autonomního řízení robotů v prostředí plným překážek. Vzdálenost měří pomocí ultrazvukového senzoru a celý systém řídí vlastní „mozek" v podobě plošného spoje, který byl navržen speciálně pro robota Mantinel. Více informací <a href="https://robinsafarik.cz" target="_blank">zde</a></p>
+        </div>
+        <div class="feature-media"><img class="" src="foto4.jpeg" alt="Obrázek projektu 'Mantinel'" /></div>
+      </div>
+      <div class="separator-full"></div>
+      <div class="feature">
+        <div class="feature-text">
+          <h1><em>Inteligentní koš "ThinkSort"</em></h1>
+          <div class="separator"></div>
+          <p>Členové z VLČR vyvíjejí první inteligentní koš, který nejen roztřídí odpad, ale také poskytne uživateli zpětnou vazbu a aktivně ho vzdělává v oblasti třídění odpadu. Projekt vyhrál 3. místo v soutěži Samsung Solve for Tomorrow. První funkční prototyp pravidelně představujeme na našich akcích a nadále pracujeme na jeho vývoji.</p>
+        </div>
+        <div class="feature-media"><img class="" src="SFT2026-37.jpg" alt="Obrázek projektu 'ThinkSort'" /></div>
+      </div>
+      <div class="separator-full"></div>
+      <div class="feature">
+        <div class="feature-media"><img class="" src="logo_prednasky.png" alt="Obrázek projektu 'Vyhledávač přednášek'" /></div>
+        <div class="feature-text">
+          <h1><em>Vyhledávač přednášek</em></h1>
+          <div class="separator"></div>
+          <p>Studentská iniciativa VLČR vyvinula unikátní databázi, která sjednocuje roztříštěné akademické programy. Projekt pomáhá studentům v orientaci napříč obory a zpřístupňuje vědu veřejnosti. Je to ukázka toho, jak studentské nadšení vytváří funkční nástroj pro český vzdělávací prostor.</p>
+          <a href="https://vzdelanylid.cz/prednasky" class="button-17">Přejít na vyhledávač přednášek</a>
+        </div>
+      </div>
+      <div class="separator-full"></div>
+      <div class="feature">
+        <div class="feature-text">
+          <h1><em>Druhý život E-odpadu</em></h1>
+          <div class="separator"></div>
+          <p>Hugo Albrecht, dlouholetý člen VLČR, se věnuje stavbě počítače z vyřazených dílů nalezených u popelnic. Projekt je názornou ukázkou toho, že i z jednoduchých a zdánlivě nepotřebných součástek lze díky chytrému přemýšlení sestavit funkční počítač a dát elektronickému odpadu druhý život.</p>
+        </div>
+        <div class="feature-media"><img class="cover" src="pocitac.jpeg" alt="Počítač" /></div>
+      </div>
+      <div class="separator-full"></div>
+      <div class="feature">
+        <div class="feature-media"><img class="" src="kcemumitobude.jpeg" alt="Obrázek projektu '#kčemumitobude'" /></div>
+        <div class="feature-text">
+          <h1><em>#kčemumitobude</em></h1>
+          <div class="separator"></div>
+          <p>Kčemumitobude je filozofický směr, jehož zakladatelem je Lukáš Horák z VLČR za odborné pomoci pana Šimečka. Jde o motivaci žáků ke studiu matematiky, fyziky a počítačové vědy.</p>
+          <a href="https://vzdelanylid.cz/kcemumitobude" class="button-17">Více o #kčemumitobude</a>
+        </div>
+      </div>
+      <div class="separator-full"></div>
+      <div class="vertical-flex promo">
+        <h1><em style="opacity: 0.8">Propagační předměty</em></h1>
+        <div class="separator"></div>
+        <p>
+          Vzdělaný lid České republiky vyrábí vlastní propagační předměty,
+          od tužek a přívěsků až po bábovičky a stavebnice. Tyto předměty
+          pravidelně rozdáváme na akcích a slouží k propagaci technického
+          vzdělávání a činnosti spolku. Vybrané modely je také možné
+          stáhnout z našeho profilu na platformě Printables.
+        </p>
+        <a href="propagacni-predmety.html" class="button-17">Zobrazit propagační předměty</a>
+      </div>
+      <div class="promo-photos">
+        <img src="fotoPredmety.jpeg" alt="Propagační předměty VLČR" />
+        <img src="fotoCukrovi.jpeg" alt="Vykrajovátka VLČR" />
+        <img src="stavebnice.jpeg" alt="Stavebnice VLČR" />
+      </div>
+      <div class="separator-full"></div>
+    </section>
+
+    <div class="botnik">
+      <footer class="botnik">
+        © 2025 - 2026 VLČR — Vzdělaný lid České republiky
+      </footer>
+    </div>
+  </body>
